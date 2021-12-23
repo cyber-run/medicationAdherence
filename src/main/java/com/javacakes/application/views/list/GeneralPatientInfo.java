@@ -1,5 +1,6 @@
 package com.javacakes.application.views.list;
 
+import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.Paragraph;
@@ -39,6 +40,35 @@ public class GeneralPatientInfo extends VerticalLayout {
         setJustifyContentMode(JustifyContentMode.CENTER);
         setDefaultHorizontalComponentAlignment(Alignment.CENTER);
         getStyle().set("text-align", "center");
+
+       //Grid<GeneralPatientInfo> grid = new Grid<>(GeneralPatientInfo.class, false);
+       // grid.GeneralPatientInfo(Person::getLastName).setHeader("Last name");
+       // grid.addColumn(Person::getEmail).setHeader("Email");
+       // grid.addColumn(Person::getProfession).setHeader("Profession");
+
+        //Button primaryButton = new Button("Primary");
+        //primaryButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+
+       // Button secondaryButton = new Button("Secondary");
+
+        //Button tertiaryButton = new Button("Tertiary");
+
+        Button editbutton = new Button("Edit/Add");
+        add(editbutton);
+        Button viewdatabutton = new Button("View Data");
+        add(viewdatabutton);
+
+
+
+
+        setSizeFull();
+        setJustifyContentMode(JustifyContentMode.CENTER);
+        setDefaultHorizontalComponentAlignment(Alignment.CENTER);
+        getStyle().set("text-align", "center");
+
+
+
+
 
 
     }

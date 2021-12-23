@@ -10,6 +10,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.progressbar.ProgressBar;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.router.RouterLink;
 
 @PageTitle("GeneralPatientInfo")
 @Route(value = "generalpatientinfo")
@@ -76,6 +77,8 @@ public class GeneralPatientInfo extends VerticalLayout {
         Button viewDataButton = new Button("View Data");
         add(viewDataButton);
 
+        RouterLink infoLink = new RouterLink("Link to Medication Schedule", SetMedicationSchedule.class);
+        add(infoLink);
 
 
 

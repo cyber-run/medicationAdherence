@@ -59,6 +59,35 @@ public class GeneralPatientInfo extends VerticalLayout {
         setDefaultHorizontalComponentAlignment(Alignment.CENTER);
         getStyle().set("text-align", "center");
 
+       //Grid<GeneralPatientInfo> grid = new Grid<>(GeneralPatientInfo.class, false);
+       // grid.GeneralPatientInfo(Person::getLastName).setHeader("Last name");
+       // grid.addColumn(Person::getEmail).setHeader("Email");
+       // grid.addColumn(Person::getProfession).setHeader("Profession");
+
+        //Button primaryButton = new Button("Primary");
+        //primaryButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+
+       // Button secondaryButton = new Button("Secondary");
+
+        //Button tertiaryButton = new Button("Tertiary");
+
+        Button editButton = new Button("Edit/Add");
+        add(editButton);
+        Button viewDataButton = new Button("View Data");
+        add(viewDataButton);
+
+
+
+
+        setSizeFull();
+        setJustifyContentMode(JustifyContentMode.CENTER);
+        setDefaultHorizontalComponentAlignment(Alignment.CENTER);
+        getStyle().set("text-align", "center");
+
+
+
+
+
 
     }
 

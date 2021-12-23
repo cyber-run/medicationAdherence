@@ -72,10 +72,6 @@ public class GeneralPatientInfo extends VerticalLayout {
 
         //Button tertiaryButton = new Button("Tertiary");
 
-        Button editButton = new Button("Edit/Add");
-        add(editButton);
-        Button viewDataButton = new Button("View Data");
-        add(viewDataButton);
 
         RouterLink infoLink = new RouterLink("Link to Medication Schedule", SetMedicationSchedule.class);
         add(infoLink);

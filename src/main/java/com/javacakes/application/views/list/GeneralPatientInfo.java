@@ -53,10 +53,10 @@ public class GeneralPatientInfo extends VerticalLayout {
 
         //Button tertiaryButton = new Button("Tertiary");
 
-        Button editbutton = new Button("Edit/Add");
-        add(editbutton);
-        Button viewdatabutton = new Button("View Data");
-        add(viewdatabutton);
+        Button editButton = new Button("Edit/Add");
+        add(editButton);
+        Button viewDataButton = new Button("View Data");
+        add(viewDataButton);
 
 
 

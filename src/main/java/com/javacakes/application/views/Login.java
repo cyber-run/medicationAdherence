@@ -1,6 +1,5 @@
 package com.javacakes.application.views;
 
-import com.vaadin.flow.component.login.LoginForm;
 import com.vaadin.flow.component.login.LoginOverlay;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.BeforeEnterEvent;
@@ -13,7 +12,6 @@ import com.vaadin.flow.router.Route;
 @PageTitle("Login")
 public class Login extends VerticalLayout implements BeforeEnterListener {
 
-    private LoginForm loginForm = new LoginForm();
     LoginOverlay loginOverlay = new LoginOverlay();
 
 
@@ -25,27 +23,13 @@ public class Login extends VerticalLayout implements BeforeEnterListener {
         setJustifyContentMode(JustifyContentMode.CENTER);
 
         //call the Vaadin login component
-        loginForm.setAction("login");
-
-        //declare image variable with logo for adding login view
-        //Image img = new Image("images/pill.png", "Pill logo");
-        //img.setWidth("300px");
+        loginOverlay.setAction("login");
 
         //Add login overlay (a header to the login form)
-
         loginOverlay.setTitle("Medication Adherence");
         loginOverlay.setDescription("A monitoring app for carers");
         loginOverlay.setOpened(true);
-
-        loginForm.getElement().getThemeList();
-
-        //add the image, a heading and the login form to page
-        add(
-            //img,
-            //new H1("Medication Adherence"),
-            loginOverlay,
-            loginForm
-        );
+        add(loginOverlay);
     }
 
     @Override

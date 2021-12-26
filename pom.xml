@@ -97,6 +97,19 @@
             <artifactId>h2</artifactId>
         </dependency>
 
+<<<<<<< Updated upstream
+=======
+        <dependency> //spring boot security dependency for login page security
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <dependency> //chart dependency, requires education github for license
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-charts-flow</artifactId>
+        </dependency>
+
+>>>>>>> Stashed changes
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>

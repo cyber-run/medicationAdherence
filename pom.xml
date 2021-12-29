@@ -97,13 +97,11 @@
             <artifactId>h2</artifactId>
         </dependency>
 
-        //spring security dependency
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
-        //chart dependency, requires education github for license
         <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-charts-flow</artifactId>

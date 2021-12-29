@@ -29,6 +29,7 @@ public class Login extends VerticalLayout implements BeforeEnterListener {
         loginOverlay.setTitle("Medication Adherence");
         loginOverlay.setDescription("A monitoring app for carers");
         loginOverlay.setOpened(true);
+        loginOverlay.setForgotPasswordButtonVisible(false);
         add(loginOverlay);
     }
 

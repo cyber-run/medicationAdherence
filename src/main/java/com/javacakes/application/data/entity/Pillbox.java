@@ -1,28 +1,64 @@
 package com.javacakes.application.data.entity;
 
-
 import com.javacakes.application.data.AbstractEntity;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Pillbox extends AbstractEntity {
 
-    private String date;
-    private String pillbox_time;
+    private String Date;
 
-    public Pillbox() {}
+    private String Time;
 
-    public Pillbox(String date, String pillbox_time) {
-        this.date = date;
-        this.pillbox_time = pillbox_time;
+    private String Delay;
+
+    //Map many schedules to one medication, associating correctly to built-in memory table
+    @ManyToOne
+    @JoinColumn(name = "medication_id")
+    @NotNull
+    private Medication medication;
+
+    public Pillbox() { }
+
+    public Pillbox(String Date, String Time, String Delay) {
+        this.Date = Date;
+        this.Time = Time;
+        this.Delay = Delay;
+    }
+
+    public Medication getMedication() {
+        return medication;
+    }
+
+    public void setMedication(Medication medication) {
+        this.medication = medication;
     }
 
     public String getDate() {
-        return date;
+        return Date;
     }
 
-    public String getPillbox_time() {
-        return pillbox_time;
+    public void setDate(String Date) {
+        this.Date = Date;
+    }
+
+    public String getTime() {
+        return Time;
+    }
+
+    public void setTime(String Time) {
+        this.Time = Time;
+    }
+
+    public String getDelay() {
+        return Delay;
+    }
+
+    public void setDelay(String Delay) {
+        this.Delay = Delay;
     }
 }

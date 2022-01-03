@@ -18,7 +18,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
  */
 @SpringBootApplication
 @Theme(value = "medicationadherence", variant = Lumo.DARK)
-@PWA(name = "Medication Adherence", shortName = "Medication Adherence", offlineResources = {"images/logo.png"})
+@PWA(name = "Medication Adherence", shortName = "Medication Adherence", offlineResources = {"images/pill.svg"})
 @NpmPackage(value = "line-awesome", version = "1.3.0")
 public class Application extends SpringBootServletInitializer implements AppShellConfigurator {
 

@@ -28,11 +28,11 @@ public class DefaultLayout extends AppLayout {
     private void buildDrawer() {
         //Page links created here
         RouterLink homeView = new RouterLink("Home", Home.class);
-        RouterLink data1View = new RouterLink("Data1", Data1.class);
-        RouterLink data2View = new RouterLink("Data 2", Data2.class);
-        RouterLink data3View = new RouterLink("Data 3", Data3.class);
-        RouterLink data4View = new RouterLink("Data4", Data4.class);
-        RouterLink data5View = new RouterLink("Data5", Data5.class);
+        RouterLink data1View = new RouterLink("Adherence", Adherence.class);
+        RouterLink data2View = new RouterLink("Long-term Adherence", LongtermAdherence.class);
+        RouterLink data3View = new RouterLink("Time Delay", TimeDelay.class);
+        RouterLink data4View = new RouterLink("Long-term Delay", LongtermDelay.class);
+        RouterLink data5View = new RouterLink("Weekly Breakdown", WeeklyBreakdown.class);
 
         //use vaadin highlight condition on each link, so it is highlighted when it is current page
         homeView.setHighlightCondition(HighlightConditions.sameLocation());

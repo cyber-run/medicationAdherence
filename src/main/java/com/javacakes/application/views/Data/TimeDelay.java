@@ -11,12 +11,12 @@ import com.vaadin.flow.router.Route;
 import javax.annotation.security.PermitAll;
 
 @PermitAll
-@Route(value = "data1", layout = DefaultLayout.class)
-@PageTitle("Data1")
-public class Data1 extends VerticalLayout {
+@Route(value = "timedelay", layout = DefaultLayout.class)
+@PageTitle("TimeDelay")
+public class TimeDelay extends VerticalLayout {
 
     // Page heading
-    H1 test = new H1("Time delay");
+    H1 heading = new H1("Time Delay");
     // New chart
     Chart chart1 = new Chart(ChartType.LINE);
     Configuration conf = chart1.getConfiguration();
@@ -33,7 +33,7 @@ public class Data1 extends VerticalLayout {
             {2, 4, 3, 9}
     };
 
-    public Data1() {
+    public TimeDelay() {
         // Set x-axis
         xaxis.setCategories(dates);
         conf.addxAxis(xaxis);
@@ -52,6 +52,6 @@ public class Data1 extends VerticalLayout {
         }
 
         // Add header and chart to page
-        add(test, chart1);
+        add(heading, chart1);
     }
 }

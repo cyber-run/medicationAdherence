@@ -9,13 +9,13 @@ import com.vaadin.flow.router.Route;
 import javax.annotation.security.PermitAll;
 
 @PermitAll
-@Route(value = "data3", layout = DefaultLayout.class)
-@PageTitle("Data3")
-public class Data3 extends VerticalLayout {
+@Route(value = "adherence", layout = DefaultLayout.class)
+@PageTitle("Adherence")
+public class Adherence extends VerticalLayout {
 
-    H1 test = new H1("d3 test text");
+    H1 heading = new H1("Medication Timing Adherence");
 
-    public Data3() {
-        add(test);
+    public Adherence() {
+        add(heading);
     }
 }

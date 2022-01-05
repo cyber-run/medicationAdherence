@@ -30,7 +30,7 @@ public class JavacakeService {
         this.adherenceRepository = adherenceRepository;
     }
 
-    public List<Medication> findAllMedication(String stringFilter) {
+    public List<Medication> findAllMedication() {
         return medicationRepository.findAll();
     }
 

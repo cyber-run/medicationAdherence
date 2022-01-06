@@ -58,6 +58,10 @@ public class JavacakeService {
         return pillboxRepository.findAll();
     }
 
+    public long countPillbox() {
+        return pillboxRepository.count();
+    }
+
     public List<Adherence> findAllAdherence(){
         return adherenceRepository.findAll();
     }

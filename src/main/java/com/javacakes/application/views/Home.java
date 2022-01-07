@@ -1,7 +1,9 @@
 package com.javacakes.application.views;
 
 import com.javacakes.application.data.entity.Medication;
+import com.javacakes.application.data.service.JavacakeService;
 import com.vaadin.flow.component.gridpro.GridPro;
+import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
@@ -18,13 +20,22 @@ public class Home extends VerticalLayout {
 
     GridPro<Medication> grid = new GridPro<>(Medication.class);
 
-    //Method for home page
-    public Home() {
+    //declare service
+    JavacakeService service;
+
+    //declare heading
+    H1 heading = new H1("Medication Overview");
+
+    //Method for home page & pass in service
+    public Home(JavacakeService service) {
+
+        this.service = service;
 
         setSizeFull();
         setGrid();
 
         add(
+                heading,
                 grid
         );
     }
@@ -40,5 +51,6 @@ public class Home extends VerticalLayout {
         grid.addColumn(Medication::getPillSchedule).setHeader("Schedule");
         grid.addColumn(Medication::getPillComment).setHeader("Comment");
         grid.getColumns().forEach(adherenceColumn -> adherenceColumn.setAutoWidth(true));
+        grid.setItems(service.findAllMedication());
     }
 }

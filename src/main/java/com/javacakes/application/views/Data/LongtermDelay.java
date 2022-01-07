@@ -30,14 +30,14 @@ public class LongtermDelay extends VerticalLayout {
 
     JavacakeService service;
 
-    long pillNum;
-    long entriesNum;
+    long pillNum; // Number of pill types
+    long entriesNum; // Number of entries in pillbox data table
 
     String pillName;
     String nameMatch;
     String delay;
     String date;
-    List<Medication> pillTypes;
+    List<Medication> pillTypes; // Lazy loading because direct methods were causing errors
     List<Pillbox> entries;
 
     public LongtermDelay(JavacakeService service) {
@@ -59,6 +59,7 @@ public class LongtermDelay extends VerticalLayout {
             dataSeries.setName(pillName);
 
             for (int j=0; j<entriesNum; j++){
+                nameMatch = entries.get(j).getMedication().getPillType();
                 if (Objects.equals(nameMatch, pillName)){
                     delay = entries.get(j).getDelay();
                     int x = Integer.valueOf(delay);

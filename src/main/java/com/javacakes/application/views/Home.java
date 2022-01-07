@@ -17,6 +17,7 @@ import javax.annotation.security.PermitAll;
 @PageTitle("Home")
 @PermitAll
 public class Home extends VerticalLayout {
+    //adding comment here to main to test auto deployment on heroku via git push
 
     GridPro<Medication> grid = new GridPro<>(Medication.class);
 

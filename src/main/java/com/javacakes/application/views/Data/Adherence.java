@@ -35,7 +35,8 @@ public class Adherence extends VerticalLayout {
         yaxis.setTitle("Percentage Adherence");
         conf.addyAxis(yaxis);
 
-        // Reference https://vaadin.com/docs/latest/flow/tutorial/navigation-and-layouts
+        // Plot data
+        //-- Reference https://vaadin.com/docs/latest/flow/tutorial/navigation-and-layouts --
         this.service = service;
         DataSeries dataSeries = new DataSeries();
         service.findAllAdherence().forEach(adherence -> dataSeries.add(
@@ -44,9 +45,10 @@ public class Adherence extends VerticalLayout {
         chart.getConfiguration().setSeries(dataSeries);
 
         conf.getLegend().setEnabled(false);
+        //-- End of reference --
 
-        setDefaultHorizontalComponentAlignment(Alignment.CENTER);
-        // End of reference
+        // Show pill type as x-axis labels
+        conf.getxAxis().setType(AxisType.CATEGORY);
 
         add(heading, chart);
     }

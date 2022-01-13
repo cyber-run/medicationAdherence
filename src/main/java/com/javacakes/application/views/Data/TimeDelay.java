@@ -106,8 +106,11 @@ public class TimeDelay extends VerticalLayout {
                     dataSeries.add(new DataSeriesItem(date, delayMean));
                 }
             }
-            chart.getConfiguration().setSeries(dataSeries);
+            conf.addSeries(dataSeries);
         }
+
+        // Show date as x-axis labels
+        conf.getxAxis().setType(AxisType.CATEGORY);
 
         // Add header and chart to page
         add(heading, pgph, chart);

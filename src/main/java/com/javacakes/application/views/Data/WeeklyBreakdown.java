@@ -53,15 +53,40 @@ public class WeeklyBreakdown extends VerticalLayout {
     String date;
     List<Medication> pillTypes; // Lazy loading because direct methods were causing errors
     List<Pillbox> entries;
+
     public WeeklyBreakdown(JavacakeService service) {
         this.service = service;
-        pillTypes =  service.findAllMedication();
+        pillTypes = service.findAllMedication();
         entries = service.findAllPillbox();
         pillNum = service.countMedication();
         entriesNum = service.countPillbox();
-        chart.setWidth("1400px");
-        chart.setHeight("600px");
         conf.setTitle("Weekly Breakdown");
+
+
+        conf.getChart().setMarginTop(40);
+        conf.getChart().setMarginBottom(40);
+
+        conf.getLegend().setLayout(LayoutDirection.VERTICAL);
+        conf.getLegend().setAlign(HorizontalAlign.RIGHT);
+        conf.getLegend().setMargin(0);
+        conf.getLegend().setVerticalAlign(VerticalAlign.TOP);
+        conf.getLegend().setY(25);
+        conf.getLegend().setSymbolHeight(320);
+
+        // Set colors for the extremes
+        conf.getColorAxis().setMinColor(SolidColor.GREEN);
+        conf.getColorAxis().setMaxColor(SolidColor.RED);
+
+        PlotOptionsHeatmap plotOptionsHeatmap = new PlotOptionsHeatmap();
+        plotOptionsHeatmap.setDataLabels(new DataLabels());
+        plotOptionsHeatmap.getDataLabels().setEnabled(true);
+
+        SeriesTooltip tooltip = new SeriesTooltip();
+        tooltip.setHeaderFormat("{series.name}<br/>");
+        tooltip.setPointFormat("Amount: <b>{point.value}</b> ");
+        plotOptionsHeatmap.setTooltip(tooltip);
+        conf.setPlotOptions(plotOptionsHeatmap);
+
 
         // Set the category labels on the X axis
         xaxis.setTitle("Pill Type");
@@ -74,24 +99,17 @@ public class WeeklyBreakdown extends VerticalLayout {
         yaxis.setCategories("Morning", "Afternoon", "Evening");
         conf.addyAxis(yaxis);
 
-        // Set up border and data labels
-        PlotOptionsHeatmap plotOptions = new PlotOptionsHeatmap();
-        plotOptions.setBorderColor(SolidColor.WHITE);
-        plotOptions.setBorderWidth(2);
-        plotOptions.setDataLabels(new DataLabels(true));
-        conf.setPlotOptions(plotOptions);
 
-        // Set colors for the extremes
-        conf.getColorAxis().setMinColor(SolidColor.GREEN);
-        conf.getColorAxis().setMaxColor(SolidColor.RED);
 
         // Check if there are more than 7 days of entries in pillbox
-        weekEntries = pillNum*7;
-        weekStart = (int) (entriesNum-weekEntries+1);
+        weekEntries = pillNum * 7;
+        weekStart = (int) (entriesNum - weekEntries + 1);
         if (entriesNum > weekEntries) {
             indexStart = weekStart;
-        }
-        else{
+        } else {
             indexStart = 0;
         }
+        // Add header and chart to page
+        add(heading, chart);
     }
+}

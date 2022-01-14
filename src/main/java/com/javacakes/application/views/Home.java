@@ -51,7 +51,7 @@ public class Home extends VerticalLayout {
         setSizeFull();
         setGrid();
 
-        //service.findAllAdherence().forEach();
+        service.findAllAdherence().forEach(Adherence -> Adherence.getWeeklyAdherence());
 
         for(double flag:adhere){
             if(flag<pctAdherence){

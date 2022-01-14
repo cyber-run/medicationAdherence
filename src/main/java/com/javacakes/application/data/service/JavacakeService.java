@@ -65,4 +65,8 @@ public class JavacakeService {
     public List<Adherence> findAllAdherence(){
         return adherenceRepository.findAll();
     }
+
+    public long countAdherence() {
+        return adherenceRepository.count();
+    }
 }

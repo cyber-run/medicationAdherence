@@ -1,5 +1,6 @@
 package com.javacakes.application.views;
 
+import com.javacakes.application.data.entity.Adherence;
 import com.javacakes.application.data.entity.Medication;
 import com.javacakes.application.data.service.JavacakeService;
 import com.vaadin.flow.component.Text;
@@ -17,6 +18,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
 import javax.annotation.security.PermitAll;
+import java.util.List;
 
 //Set route to no url extension to make home page default after login
 //Add default layout class to implement header and drawer for navigation
@@ -39,25 +41,31 @@ public class Home extends VerticalLayout {
     Div text = new Div();
     Button closeButton = new Button(new Icon("lumo", "cross"));
 
-    // Hard-coded adherence
+
     double pctAdherence = 85.00;
-    Double[] adhere = {80.95,85.71,42.86};
+    double adherenceValue;
+    long count;
+    String pilltype;
+    List<Adherence> values;
 
     //Method for home page & pass in service
     public Home(JavacakeService service) {
 
         this.service = service;
+        values = service.findAllAdherence();
+        count = service.countAdherence();
 
         setSizeFull();
         setGrid();
 
-        service.findAllAdherence().forEach(Adherence -> Adherence.getWeeklyAdherence());
-
-        for(double flag:adhere){
-            if(flag<pctAdherence){
-                displayNotification(flag);
+        for(int i=0; i<count; i++){
+            adherenceValue = values.get(i).getWeeklyAdherence();
+            pilltype = values.get(i).getMedication().getPillType();
+            if(adherenceValue <pctAdherence){
+                displayNotification(pilltype);
             }
         }
+
 
         add(
                 heading,
@@ -65,7 +73,7 @@ public class Home extends VerticalLayout {
         );
     }
 
-    private void displayNotification(double adHere) {
+    private void displayNotification(String adHere) {
         //-- Reference: https://vaadin.com/docs/latest/ds/components/notification/#error --
         notification.addThemeVariants(NotificationVariant.LUMO_ERROR);
 
@@ -83,8 +91,8 @@ public class Home extends VerticalLayout {
         //-- End of reference --
         notification.setPosition(Notification.Position.TOP_CENTER);
 
-        text.add(String.valueOf(adHere));
-        text.add(new Text(" has fallen below 85%! "));
+        text.add(adHere);
+        text.add(new Text("'s timing adherence has fallen below 85%! "));
     }
 
     //method to configure the grid, called in home constructor

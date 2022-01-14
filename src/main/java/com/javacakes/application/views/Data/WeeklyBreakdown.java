@@ -50,7 +50,6 @@ public class WeeklyBreakdown extends VerticalLayout {
         entries = service.findAllPillbox();
         pillNum = service.countMedication();
         entriesNum = service.countPillbox();
-        conf.setTitle("Weekly Breakdown");
 
         //chart config
         conf.getChart().setMarginTop(40);
@@ -79,7 +78,7 @@ public class WeeklyBreakdown extends VerticalLayout {
 
         //LABELS
         // Set the category labels on the X axis
-        xaxis.setTitle("Pill Type");
+        xaxis.setTitle("");
         xaxis.setCategories("Day 1", "Day 2", "Day 3",
                 "Day 4", "Day 5", "Day 6", "Day 7");
         conf.addxAxis(xaxis);

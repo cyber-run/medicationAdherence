@@ -8,7 +8,8 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.gridpro.GridPro;
 import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.H2;
+import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.notification.NotificationVariant;
@@ -33,8 +34,12 @@ public class Home extends VerticalLayout {
     JavacakeService service;
 
     // Declare page elements
-    H1 heading = new H1("Medication Overview");
+    H2 heading = new H2("Medication Overview");
     GridPro<Medication> grid = new GridPro<>(Medication.class);
+
+    String patientID;
+
+    Paragraph pgph = new Paragraph("Patient ID: " + patientID);
 
     // Creating a persistent notification if adherence threshold drops below 85%
     Notification notification = new Notification();
@@ -69,6 +74,7 @@ public class Home extends VerticalLayout {
 
         add(
                 heading,
+                pgph,
                 grid
         );
     }

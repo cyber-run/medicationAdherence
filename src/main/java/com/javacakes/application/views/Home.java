@@ -2,6 +2,7 @@ package com.javacakes.application.views;
 
 import com.javacakes.application.data.entity.Adherence;
 import com.javacakes.application.data.entity.Medication;
+import com.javacakes.application.data.entity.Patient;
 import com.javacakes.application.data.service.JavacakeService;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.button.Button;
@@ -36,10 +37,8 @@ public class Home extends VerticalLayout {
     // Declare page elements
     H2 heading = new H2("Medication Overview");
     GridPro<Medication> grid = new GridPro<>(Medication.class);
-
+    Paragraph pgph = new Paragraph();
     String patientID;
-
-    Paragraph pgph = new Paragraph("Patient ID: " + patientID);
 
     // Creating a persistent notification if adherence threshold drops below 85%
     Notification notification = new Notification();
@@ -52,6 +51,7 @@ public class Home extends VerticalLayout {
     long count;
     String pilltype;
     List<Adherence> values;
+    List<Patient> patientList;
 
     //Method for home page & pass in service
     public Home(JavacakeService service) {
@@ -59,6 +59,12 @@ public class Home extends VerticalLayout {
         this.service = service;
         values = service.findAllAdherence();
         count = service.countAdherence();
+        patientList = service.findAllPatient();
+
+        // Display patientID
+        patientID = patientList.get(0).getPatientID();
+        pgph.add("Patient ID: ");
+        pgph.add(patientID);
 
         setSizeFull();
         setGrid();

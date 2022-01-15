@@ -8,6 +8,7 @@ import com.vaadin.flow.component.charts.Chart;
 import com.vaadin.flow.component.charts.model.*;
 import com.vaadin.flow.component.charts.model.style.SolidColor;
 import com.vaadin.flow.component.html.H2;
+import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
@@ -23,6 +24,8 @@ public class WeeklyBreakdown extends VerticalLayout {
 
     // Page heading
     H2 heading = new H2("Weekly Breakdown");
+    // Comment
+    Paragraph pgph = new Paragraph("Note: If pill was not taken, the delay will be taken as 180 minutes.");
 
     // New chart
     Chart chart = new Chart(ChartType.HEATMAP);
@@ -95,7 +98,7 @@ public class WeeklyBreakdown extends VerticalLayout {
         conf.addSeries(series);
 
         // Add header and chart to page
-        add(heading, chart);
+        add(heading, pgph, chart);
     }
 
     //function for grabbing data from table
@@ -104,7 +107,7 @@ public class WeeklyBreakdown extends VerticalLayout {
         //Declare heat series datatype
         HeatSeries data = new HeatSeries();
 
-        int x = 0;
+        int x = 2;
 
         entries = service.findAllPillbox();
         entriesNum = service.countPillbox();
@@ -122,12 +125,12 @@ public class WeeklyBreakdown extends VerticalLayout {
                         delayMins = Integer.valueOf(delaySplit[k]);
                     }
                     else {
-                        delayMins = -1;
+                        delayMins = 180;
                     }
                     data.addHeatPoint(x,y,delayMins);
                     y++;
                     }
-                x++;
+                x--;
                 }
             }
         return data;

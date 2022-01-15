@@ -26,7 +26,7 @@ public class WeeklyBreakdown extends VerticalLayout {
     H2 heading = new H2("Weekly Breakdown");
     // Comment
     Paragraph pgph = new Paragraph("Notes: "+
-            "Only the data for one pill is shown here."+
+            "Only the data for one pill is shown here. "+
             "If pill was not taken, the delay will be taken as 180 minutes.");
 
     // New chart
@@ -93,7 +93,7 @@ public class WeeklyBreakdown extends VerticalLayout {
 
         // Set the category labels on the Y axis
         yaxis.setTitle("");
-        yaxis.setCategories("Morning", "Afternoon", "Evening");
+        yaxis.setCategories("Evening", "Afternoon", "Morning");
         conf.addyAxis(yaxis);
 
         HeatSeries series = new HeatSeries();
@@ -112,7 +112,7 @@ public class WeeklyBreakdown extends VerticalLayout {
         //Declare heat series datatype
         HeatSeries data = new HeatSeries();
 
-        int x = 2;
+        int x = 0;
 
         entries = service.findAllPillbox();
         entriesNum = service.countPillbox();
@@ -134,7 +134,7 @@ public class WeeklyBreakdown extends VerticalLayout {
                 delaySplit = delay.split(",");
                 delayNum = delaySplit.length;
 
-                int y = 0;
+                int y = 2;
                 for (int k=0; k<delayNum; k++){
                     if(StringUtils.isNumeric(delaySplit[k])){
                         delayMins = Integer.valueOf(delaySplit[k]);
@@ -143,9 +143,9 @@ public class WeeklyBreakdown extends VerticalLayout {
                         delayMins = 180;
                     }
                     data.addHeatPoint(x,y,delayMins);
-                    y++;
+                    y--;
                     }
-                x--;
+                x++;
                 }
             }
         return data;

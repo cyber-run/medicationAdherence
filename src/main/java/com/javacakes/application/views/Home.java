@@ -66,7 +66,7 @@ public class Home extends VerticalLayout {
         pgph.add("Patient ID: ");
         for(int j=0; j<patientsNum; j++){
             patientID = patientList.get(j).getPatientID();
-            pgph.add(patientID);
+            pgph.add(new Text(patientID));
         }
 
         setSizeFull();

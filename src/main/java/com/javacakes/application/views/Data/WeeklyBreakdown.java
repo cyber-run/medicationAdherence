@@ -25,7 +25,9 @@ public class WeeklyBreakdown extends VerticalLayout {
     // Page heading
     H2 heading = new H2("Weekly Breakdown");
     // Comment
-    Paragraph pgph = new Paragraph("Note: If pill was not taken, the delay will be taken as 180 minutes.");
+    Paragraph pgph = new Paragraph("Notes: "+
+            "Only the data for one pill is shown here."+
+            "If pill was not taken, the delay will be taken as 180 minutes.");
 
     // New chart
     Chart chart = new Chart(ChartType.HEATMAP);

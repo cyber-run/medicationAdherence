@@ -41,6 +41,9 @@ public class WeeklyBreakdown extends VerticalLayout {
     long entriesNum; // Number of entries in pillbox data table
     int delayNum; // Number of elements in each delay entry
     int delayMins; // Delay in minutes
+    long weekEntries; // Number of entries to make a week
+    int weekStart; // Index of first entry of the last 7 days
+    int indexStart; // First index of for loop
 
     String delay;
     String[] delaySplit;
@@ -112,7 +115,17 @@ public class WeeklyBreakdown extends VerticalLayout {
         entries = service.findAllPillbox();
         entriesNum = service.countPillbox();
 
-        for (int j=0; j<entriesNum; j++) {
+        // Check if there are more than 7 days of entries in pillbox
+        weekEntries = pillNum*7;
+        weekStart = (int) (entriesNum-weekEntries);
+        if (entriesNum > weekEntries) {
+            indexStart = weekStart;
+        }
+        else{
+            indexStart = 0;
+        }
+
+        for (int j=indexStart; j<entriesNum; j++) {
             int idMatch = entries.get(j).getMedication().getId();
             if (medID == idMatch) {
                 delay = entries.get(j).getDelay();

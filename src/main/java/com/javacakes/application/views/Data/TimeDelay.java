@@ -72,7 +72,7 @@ public class TimeDelay extends VerticalLayout {
 
             // Check if there are more than 7 days of entries in pillbox
             weekEntries = pillNum*7;
-            weekStart = (int) (entriesNum-weekEntries+1);
+            weekStart = (int) (entriesNum-weekEntries);
             if (entriesNum > weekEntries) {
                 indexStart = weekStart;
             }

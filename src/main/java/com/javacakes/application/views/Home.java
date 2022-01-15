@@ -38,7 +38,6 @@ public class Home extends VerticalLayout {
     H2 heading = new H2("Medication Overview");
     GridPro<Medication> grid = new GridPro<>(Medication.class);
     Paragraph pgph = new Paragraph();
-    String patientID;
 
     // Creating a persistent notification if adherence threshold drops below 85%
     Notification notification = new Notification();
@@ -49,7 +48,9 @@ public class Home extends VerticalLayout {
     double pctAdherence = 85.00;
     double adherenceValue;
     long count;
+    int patientsNum;
     String pilltype;
+    String patientID;
     List<Adherence> values;
     List<Patient> patientList;
 
@@ -62,9 +63,11 @@ public class Home extends VerticalLayout {
         patientList = service.findAllPatient();
 
         // Display patientID
-        patientID = patientList.get(0).getPatientID();
         pgph.add("Patient ID: ");
-        pgph.add(patientID);
+        for(int j=0; j<patientsNum; j++){
+            patientID = patientList.get(j).getPatientID();
+            pgph.add(patientID);
+        }
 
         setSizeFull();
         setGrid();

@@ -35,6 +35,6 @@ public class SecuritySettings extends VaadinWebSecurityConfigurerAdapter {
         //as this is not a production deployment, use in memory storage to store a test user/pass
         //this is not secure and can be replaced with a secure account authentification service for deployment
         //use no operation as not concerned with encrypting the stored password for test deployment
-        return new InMemoryUserDetailsManager(User.withUsername("martin").password("{noop}nettles").roles("Carer").build());
+        return new InMemoryUserDetailsManager(User.withUsername("carer").password("{noop}javacakes").roles("Carer").build());
     }
 }

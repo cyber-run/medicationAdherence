@@ -62,10 +62,10 @@ public class Home extends VerticalLayout {
         count = service.countAdherence();
         patientList = service.findAllPatient();
 
-        // Display patientID
+        // Display patientID,
         pgph.add("Patient ID: ");
-        for(int j=0; j<patientsNum; j++){
-            patientID = patientList.get(j).getPatientID();
+        if(!patientList.isEmpty()){
+            patientID = patientList.get(0).getPatientID();
             pgph.add(new Text(patientID));
         }
 
